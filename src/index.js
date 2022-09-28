@@ -11,7 +11,7 @@ let id = getUserId();
 
 (async () => {
   const LDProvider = await asyncWithLDProvider({
-    clientSideID: '6334d0ab07032b10af8078a0',
+    clientSideID: '6334d0f421726c111b81f275',
     user: {
       key: id,
       custom: {

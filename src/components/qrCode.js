@@ -1,6 +1,6 @@
 import QRCode from "react-qr-code";
 
-const QRURL = "http://goto1.launchdarklydemos.com";
+const QRURL = "http://goto2.launchdarklydemos.com";
 
 const qrCodeHome = () => {  
   return (

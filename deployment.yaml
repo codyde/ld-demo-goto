@@ -1,29 +1,29 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: goto-1
-  namespace: goto-1
+  name: goto-2
+  namespace: goto-2
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: goto-1
-  namespace: goto-1
+  name: goto-2
+  namespace: goto-2
   labels:
-    app: goto-1
+    app: goto-2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: goto-1
+      app: goto-2
   template:
     metadata:
       labels:
-        app: goto-1
+        app: goto-2
     spec:
       containers:
-        - name: goto-1
-          image: codydearkland/ld-demo-goto:1
+        - name: goto-2
+          image: codydearkland/ld-demo-goto:2
           imagePullPolicy: Always
           ports:
             - name: web
@@ -33,7 +33,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: goto-1
+  namespace: goto-2
   name: goto-lb
 spec:
   ports:
@@ -41,5 +41,5 @@ spec:
     protocol: TCP
     targetPort: 3000
   selector:
-    app: goto-1
+    app: goto-2
   type: LoadBalancer
