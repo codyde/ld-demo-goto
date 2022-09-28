@@ -14,17 +14,17 @@ provider "launchdarkly" {
   access_token = var.LAUNCHDARKLY_ACCESS_TOKEN
 }
 
-resource "launchdarkly_project" "forrester" {
-  key  = "ld-demo-forrester"
-  name = "ld-demo-forrester"
+resource "launchdarkly_project" "goto" {
+  key  = "ld-demo-goto"
+  name = "ld-demo-goto"
 
   tags = [
     "terraform",
   ]
 
   environments {
-        key   = "forrester1"
-        name  = "forrester-1"
+        key   = "goto1"
+        name  = "goto-1"
         color = "7B42BC"
         tags  = ["terraform"]
   }
@@ -35,7 +35,7 @@ resource "launchdarkly_project" "forrester" {
 }
 
 resource "launchdarkly_feature_flag" "qrcode" {
-  project_key = launchdarkly_project.forrester.key
+  project_key = launchdarkly_project.goto.key
   key         = "qrcode"
   name        = "0 - QR Code"
   description = "This flag enables the view of the QR Code on our application canvas for mobile device viewing"
@@ -63,7 +63,7 @@ resource "launchdarkly_feature_flag" "qrcode" {
 }
 
 resource "launchdarkly_feature_flag" "logoversion" {
-  project_key = launchdarkly_project.forrester.key
+  project_key = launchdarkly_project.goto.key
   key         = "logoversion"
   name        = "4 - Logo Version"
   description = "This flag controls which logo is visible within the application"
@@ -91,7 +91,7 @@ resource "launchdarkly_feature_flag" "logoversion" {
 }
 
 resource "launchdarkly_feature_flag" "cardshow" {
-  project_key = launchdarkly_project.forrester.key
+  project_key = launchdarkly_project.goto.key
   key         = "cardshow"
   name        = "5 - Release Cards"
   description = "This flag controls the visibility of the release cards on the bottom of the UI "
@@ -119,7 +119,7 @@ resource "launchdarkly_feature_flag" "cardshow" {
 }
 
 resource "launchdarkly_feature_flag" "upperimage" {
-  project_key = launchdarkly_project.forrester.key
+  project_key = launchdarkly_project.goto.key
   key         = "upperimage"
   name        = "3 - Upper Image"
   description = "Show the upper immage on page"
@@ -147,7 +147,7 @@ resource "launchdarkly_feature_flag" "upperimage" {
 }
 
 resource "launchdarkly_feature_flag" "login" {
-  project_key = launchdarkly_project.forrester.key
+  project_key = launchdarkly_project.goto.key
   key         = "login"
   name        = "2 - Login UI"
   description = "Show the login box for user targeting"
@@ -175,7 +175,7 @@ resource "launchdarkly_feature_flag" "login" {
 }
 
 resource "launchdarkly_feature_flag" "prodHeader" {
-  project_key = launchdarkly_project.forrester.key
+  project_key = launchdarkly_project.goto.key
   key         = "prodHeader"
   name        = "1 - Production Header"
   description = "Enables the production header view in the UI"
@@ -203,11 +203,11 @@ resource "launchdarkly_feature_flag" "prodHeader" {
 }
 
 output "LaunchDarkly_API_Key" {
-  value = launchdarkly_project.forrester.environments[0].api_key
+  value = launchdarkly_project.goto.environments[0].api_key
   sensitive = true
 }
 
 output "LaunchDarkly_Client_Side_Key" {
-  value = launchdarkly_project.forrester.environments[0].client_side_id
+  value = launchdarkly_project.goto.environments[0].client_side_id
   sensitive = true
 }
