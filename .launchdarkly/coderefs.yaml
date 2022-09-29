@@ -1,5 +1,5 @@
 projects:
-    - key: ld-demo-devopsdays
+    - key: ld-demo-goto
       dir: src
       aliases:
         - type: camelcase
